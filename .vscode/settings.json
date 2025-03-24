@@ -10,5 +10,8 @@
     "Patacode",
     "rustc",
     "ureq"
+  ],
+  "editor.rulers": [
+    80
   ]
 }
