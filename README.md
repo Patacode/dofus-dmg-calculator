@@ -32,7 +32,7 @@ Options:
   -h, --help                Print help
   -V, --version             Print version
 
-Version: 1.0.0
+Version: 1.0.1
 Author: Patacode <pata.codegineer@gmail.com>
 ```
 
