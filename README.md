@@ -1,13 +1,20 @@
 # dofus-dmg-calculator
 
-This binary crate computes the estimated damages one of your Dofus spell may
+Binary crate to compute the estimated damages one of your Dofus spell may
 inflict.
+
+## Installation
+
+Current release: 1.0.0
+```
+$ cargo install dofus-dmg-calculator
+```
 
 ## Usage
 
 Here are the available options:
 
-```bash
+```
 $ dofus-dmg-calculator --help
 Usage: dofus-dmg-calculator [OPTIONS]
 
@@ -34,7 +41,7 @@ inflicting `9-11 (12-14)` (meaning 9 to 11 damages by default and 12 to 14 if a
 critical hit occurs), by a character having 128 points allocated in the
 spell's stat (e.g. agility) and 1 fixed damage:
 
-```bash
+```
 $ dofus-dmg-calculator \
   --default-min 9 \
   --default-max 11 \
@@ -44,3 +51,19 @@ $ dofus-dmg-calculator \
   --fixed-dmg 1
 Damage estimation = 21 - 26 (28 - 32)
 ```
+
+## License
+
+Licensed under either of
+
+* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
+* MIT license ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
+
+at your option.
+
+### Contribution
+
+Unless you explicitly state otherwise, any contribution intentionally
+submitted for inclusion in the work by you, as defined in the Apache-2.0
+license, shall be dual-licensed as above, without any additional terms or
+conditions.
