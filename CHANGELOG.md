@@ -9,6 +9,22 @@ and this project adheres to
 @PlannedForNextRelease
 ## [@Unreleased] - @ReleaseDate
 
+### Added
+
+- Improve replacement hook on crate release to also add unreleased section with
+proper replacement tags
+- Improve README with note regarding crate uses as library
+- Unit tests
+- Benchmarking
+
+### Changed
+
+- Custom rust formatter config to meet own standard
+
+### Fixed
+
+- Add missing listed feature in changelog of version 1.0.5 
+
 ## [1.0.5] - 2025-03-24
 
 ### Added
