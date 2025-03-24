@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-echo $NEW_VERSION
+sed -i "s/$PREV_VERSION/$NEW_VERSION/g" README.md
