@@ -16,4 +16,8 @@ clap = { version = "4.5.32", features = ["derive"] }
 [package.metadata.release]
 pre-release-commit-message = "chore: prepare for release v{{version}}"
 tag-message = "Release {{crate_name}} version {{version}}"
-pre-release-hook = ["./release-new-version.sh"]
+pre-release-replacements = [
+  {file="README.md", search="\\d\\.\\d\\.\\d", replace="{{version}}"},
+  {file="CHANGELOG.md", search="@Unreleased", replace="{{version}}"},
+  {file="CHANGELOG.md", search="@ReleaseDate", replace="{{date}}"},
+]
