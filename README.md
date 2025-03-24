@@ -5,7 +5,7 @@ inflict.
 
 ## Installation
 
-Current release: 1.0.2
+Current release: 1.0.3
 ```
 $ cargo install dofus-dmg-calculator
 ```
@@ -32,7 +32,7 @@ Options:
   -h, --help                Print help
   -V, --version             Print version
 
-Version: 1.0.2
+Version: 1.0.3
 Author: Patacode <pata.codegineer@gmail.com>
 ```
 
