@@ -6,6 +6,7 @@ description = "Compute the estimated damages your Dofus spell may inflict"
 authors = ["Patacode <pata.codegineer@gmail.com>"]
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/Patacode/dofus-dmg-calculator"
+documentation = "https://docs.rs/crate/dofus-dmg-calculator"
 keywords = ["dofus", "damage", "calculator", "utility", "spell"]
 categories = ["games", "command-line-utilities"]
 
