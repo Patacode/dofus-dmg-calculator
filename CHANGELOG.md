@@ -11,7 +11,8 @@ and this project adheres to
 ### Added
 
 - Add link to crate documentation stored on docs.rs in `Cargo.toml`
-- Add useful badge links in README using shields.io API 
+- Add useful badge links in README using shields.io API
+- Automate changelog update on crate release 
 
 ### Changed
 
