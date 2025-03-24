@@ -11,3 +11,7 @@ categories = ["games", "command-line-utilities"]
 
 [dependencies]
 clap = { version = "4.5.32", features = ["derive"] }
+
+[package.metadata.release]
+pre-release-commit-message = "chore: prepare for release"
+tag-message = "Release {{crate_name}} version {{version}}"
