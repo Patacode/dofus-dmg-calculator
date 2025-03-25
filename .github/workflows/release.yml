@@ -37,6 +37,11 @@ jobs:
           WITH_BENCHMARKING: ${{ inputs.withBenchmarking }}
       - name: Checkout latest changes
         uses: actions/checkout@v4
+      - name: Install cargo-release from crates.io
+        uses: baptiste0928/cargo-install@v3
+        with:
+          crate: cargo-release
+          tag: "0.25.17"
       - name: Archive latest changes
         uses: actions/upload-artifact@v4
         with:
@@ -92,6 +97,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [prepare, build, test]
     steps:
+      - name: Fetch cargo-release from cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/cargo-release
+          key: cargo-release
       - name: Fetch source code
         uses: actions/download-artifact@v4
         with:
