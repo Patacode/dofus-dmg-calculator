@@ -22,6 +22,8 @@ on:
         type: boolean
       dryRun:
         description: "Deploy in dry run mode"
+        required: false
+        type: boolean
 
 jobs:
   prepare:
