@@ -1,6 +1,6 @@
 use clap::CommandFactory;
 use clap::Parser;
-use dofus_dmg_calculator::calculate_damage;
+use dofus_dmg_calculator::compute_dmg_estimation;
 
 #[derive(Parser, Debug)]
 #[command(version, about, author, long_about = None)]
@@ -93,13 +93,13 @@ fn main() {
     }
 
     let dmg_dmin =
-        calculate_damage(args.dmin, args.stat, args.power, args.dfixed);
+        compute_dmg_estimation(args.dmin, args.dfixed, args.stat, args.power);
     let dmg_dmax =
-        calculate_damage(args.dmax, args.stat, args.power, args.dfixed);
+        compute_dmg_estimation(args.dmax, args.dfixed, args.stat, args.power);
     let dmg_cmin =
-        calculate_damage(args.cmin, args.stat, args.power, args.dfixed);
+        compute_dmg_estimation(args.cmin, args.dfixed, args.stat, args.power);
     let dmg_cmax =
-        calculate_damage(args.cmax, args.stat, args.power, args.dfixed);
+        compute_dmg_estimation(args.cmax, args.dfixed, args.stat, args.power);
 
     println!(
         "Damage estimation = {dmg_dmin} - {dmg_dmax} ({dmg_cmin} - {dmg_cmax})"
