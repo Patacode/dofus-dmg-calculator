@@ -52,6 +52,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: source-code
+          path: ./
       - name: Generate production-ready artifacts
         run: cargo build --release --verbose
       - name: Archive production artifacts
@@ -65,8 +66,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: [prepare, build]
     steps:
-      - name: Fetch source code and production artifacts
+      - name: Fetch source code
         uses: actions/download-artifact@v4
+        with:
+          name: source-code
+          path: ./
+      - name: Fetch production artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: target
       - name: Check code formatting
         run: cargo fmt --check
       - name: Run library unit tests
@@ -84,8 +92,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: [prepare, build, test]
     steps:
+      - name: Fetch source code
+        uses: actions/download-artifact@v4
+        with:
+          name: source-code
+          path: ./
       - name: Fetch production artifacts
         uses: actions/download-artifact@v4
+        with:
+          name: target
       - name: Trigger new deployment
         run: cargo release ${{ inputs.bumpLevel }} --execute
 
