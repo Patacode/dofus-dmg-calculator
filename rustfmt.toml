@@ -3,4 +3,4 @@ newline_style = "Unix"
 edition = "2024"
 fn_single_line = true
 imports_granularity = "Item"
-group_imports = "StdExternalCrate"
+group_imports = "Preserve"
