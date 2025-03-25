@@ -21,7 +21,7 @@ struct Args {
         default_value_t = 0,
         help = "The minimum default damage of your spell"
     )]
-    dmin: u64,
+    min_default_dmg: u64,
 
     #[arg(
         short = 'j',
@@ -29,7 +29,7 @@ struct Args {
         default_value_t = 0,
         help = "The maximum default damage of your spell"
     )]
-    dmax: u64,
+    max_default_dmg: u64,
 
     #[arg(
         short = 'k',
@@ -37,7 +37,7 @@ struct Args {
         default_value_t = 0,
         help = "The minimum critical damage of your spell"
     )]
-    cmin: u64,
+    min_crit_dmg: u64,
 
     #[arg(
         short = 'l',
@@ -45,7 +45,7 @@ struct Args {
         default_value_t = 0,
         help = "The maximum critical damage of your spell"
     )]
-    cmax: u64,
+    max_crit_dmg: u64,
 
     #[arg(
         short,
@@ -53,7 +53,7 @@ struct Args {
         default_value_t = 0,
         help = "The stat points of your spell's type your character has"
     )]
-    stat: u64,
+    stat_points: u64,
 
     #[arg(
         short,
@@ -69,7 +69,7 @@ struct Args {
         default_value_t = 0,
         help = "The fixed damage of your spell's type your character has"
     )]
-    dfixed: u64,
+    fixed_dmg: u64,
 
     #[arg(
         short = 'a',
@@ -92,16 +92,32 @@ fn main() {
         return;
     }
 
-    let dmg_dmin =
-        compute_dmg_estimation(args.dmin, args.dfixed, args.stat, args.power);
-    let dmg_dmax =
-        compute_dmg_estimation(args.dmax, args.dfixed, args.stat, args.power);
-    let dmg_cmin =
-        compute_dmg_estimation(args.cmin, args.dfixed, args.stat, args.power);
-    let dmg_cmax =
-        compute_dmg_estimation(args.cmax, args.dfixed, args.stat, args.power);
+    let min_default_dmg = compute_dmg_estimation(
+        args.min_default_dmg,
+        args.fixed_dmg,
+        args.stat_points,
+        args.power,
+    );
+    let max_default_dmg = compute_dmg_estimation(
+        args.max_default_dmg,
+        args.fixed_dmg,
+        args.stat_points,
+        args.power,
+    );
+    let min_crit_dmg = compute_dmg_estimation(
+        args.min_crit_dmg,
+        args.fixed_dmg,
+        args.stat_points,
+        args.power,
+    );
+    let max_crit_dmg = compute_dmg_estimation(
+        args.max_crit_dmg,
+        args.fixed_dmg,
+        args.stat_points,
+        args.power,
+    );
 
     println!(
-        "Damage estimation = {dmg_dmin} - {dmg_dmax} ({dmg_cmin} - {dmg_cmax})"
+        "Damage estimation = {min_default_dmg} - {max_default_dmg} ({min_crit_dmg} - {max_crit_dmg})"
     )
 }
