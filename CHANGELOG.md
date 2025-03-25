@@ -9,6 +9,8 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+## [1.0.6] - 2025-03-25
+
 ### Added
 
 - Improve replacement hook on crate release to also add unreleased section with
