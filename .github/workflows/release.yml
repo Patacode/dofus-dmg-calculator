@@ -112,6 +112,4 @@ jobs:
         uses: geekyeggo/delete-artifact@v5
         with:
           failOnError: false
-          name: |
-            source-code
-            target
+          name: crate-*
