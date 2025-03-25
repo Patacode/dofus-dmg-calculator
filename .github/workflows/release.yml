@@ -44,7 +44,7 @@ jobs:
       - name: Archive latest changes
         uses: actions/upload-artifact@v4
         with:
-          name: crate-source-code
+          name: source-code
           path: ./
 
   build:
@@ -55,13 +55,13 @@ jobs:
       - name: Fetch latest changes
         uses: actions/download-artifact@v4
         with:
-          name: crate-source-code
+          name: source-code
       - name: Generate production-ready artifacts
         run: cargo build --release --verbose
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: crate-target
+          name: target
           path: ./target
 
   test:
@@ -72,7 +72,7 @@ jobs:
       - name: Fetch source code and production artifacts
         uses: actions/download-artifact@v4
         with:
-          name: crate-*
+          merge-multiple: true
       - name: Check code formatting
         run: cargo fmt --check
       - name: Run library unit tests
@@ -98,7 +98,7 @@ jobs:
       - name: Fetch source code and production artifacts
         uses: actions/download-artifact@v4
         with:
-          name: crate-*
+          merge-multiple: true
       - name: Trigger new deployment
         run: cargo release ${{ inputs.bumpLevel }} $WITH_DRY_RUN
         env:
@@ -114,4 +114,6 @@ jobs:
         uses: geekyeggo/delete-artifact@v5
         with:
           failOnError: false
-          name: crate-*
+          name: |
+            target
+            source-code
