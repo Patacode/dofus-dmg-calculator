@@ -1,5 +1,6 @@
 use clap::CommandFactory;
 use clap::Parser;
+
 use dofus_dmg_calculator::compute_dmg_estimation;
 
 #[derive(Parser, Debug)]
