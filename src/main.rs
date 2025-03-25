@@ -1,4 +1,5 @@
-use clap::{CommandFactory, Parser};
+use clap::CommandFactory;
+use clap::Parser;
 use dofus_dmg_calculator::calculate_damage;
 
 #[derive(Parser, Debug)]
@@ -54,7 +55,12 @@ struct Args {
     )]
     stat: u64,
 
-    #[arg(short, long, default_value_t = 0, help = "The power of your character")]
+    #[arg(
+        short,
+        long,
+        default_value_t = 0,
+        help = "The power of your character"
+    )]
     power: u64,
 
     #[arg(
@@ -65,7 +71,11 @@ struct Args {
     )]
     dfixed: u64,
 
-    #[arg(short = 'a', long = "author", action = clap::ArgAction::SetTrue, help = "Print author infos")]
+    #[arg(
+        short = 'a',
+        long = "author",
+        action = clap::ArgAction::SetTrue, help = "Print author infos"
+    )]
     show_author: bool,
 }
 
@@ -82,10 +92,16 @@ fn main() {
         return;
     }
 
-    let dmg_dmin = calculate_damage(args.dmin, args.stat, args.power, args.dfixed);
-    let dmg_dmax = calculate_damage(args.dmax, args.stat, args.power, args.dfixed);
-    let dmg_cmin = calculate_damage(args.cmin, args.stat, args.power, args.dfixed);
-    let dmg_cmax = calculate_damage(args.cmax, args.stat, args.power, args.dfixed);
+    let dmg_dmin =
+        calculate_damage(args.dmin, args.stat, args.power, args.dfixed);
+    let dmg_dmax =
+        calculate_damage(args.dmax, args.stat, args.power, args.dfixed);
+    let dmg_cmin =
+        calculate_damage(args.cmin, args.stat, args.power, args.dfixed);
+    let dmg_cmax =
+        calculate_damage(args.cmax, args.stat, args.power, args.dfixed);
 
-    println!("Damage estimation = {dmg_dmin} - {dmg_dmax} ({dmg_cmin} - {dmg_cmax})")
+    println!(
+        "Damage estimation = {dmg_dmin} - {dmg_dmax} ({dmg_cmin} - {dmg_cmax})"
+    )
 }
