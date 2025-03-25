@@ -15,8 +15,7 @@ fn it_outputs_correct_dmg_estimation_with_no_args() {
 fn it_outputs_correct_dmg_estimation_with_all_args() {
     let mut cmd = get_test_bin("dofus-dmg-calculator");
 
-    cmd
-        .args(["-i", "9"])
+    cmd.args(["-i", "9"])
         .args(["-j", "11"])
         .args(["-k", "12"])
         .args(["-l", "14"])
@@ -36,8 +35,7 @@ fn it_outputs_correct_dmg_estimation_with_all_args() {
 fn it_outputs_correct_dmg_estimation_with_some_args() {
     let mut cmd = get_test_bin("dofus-dmg-calculator");
 
-    cmd
-        .args(["-i", "9"])
+    cmd.args(["-i", "9"])
         .args(["-j", "11"])
         .args(["-k", "12"])
         .args(["-l", "14"])
