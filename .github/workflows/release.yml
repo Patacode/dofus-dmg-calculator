@@ -46,6 +46,7 @@ jobs:
         with:
           name: source-code
           path: ./
+          include-hidden-files: true
 
   build:
     name: Build crate
@@ -63,6 +64,7 @@ jobs:
         with:
           name: target
           path: ./target
+          include-hidden-files: true
 
   test:
     name: Test crate
@@ -100,9 +102,7 @@ jobs:
         with:
           merge-multiple: true
       - name: Trigger new deployment
-        run: cargo release ${{ inputs.bumpLevel }} $WITH_DRY_RUN
-        env:
-          WITH_DRY_RUN: ${{ inputs.dryRun && '--execute' || '' }}
+        run: cargo release ${{ inputs.bumpLevel }} ${{ inputs.dryRun && '' || '--execute' }}
 
   cleanup:
     name: Cleanup artifacts
