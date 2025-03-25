@@ -20,6 +20,7 @@ proper replacement tags
 ### Changed
 
 - Custom rust formatter config to meet own standard
+- Improve sentences quality in README and crate description
 
 ### Fixed
 
