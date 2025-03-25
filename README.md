@@ -4,19 +4,26 @@
 [<img alt="crates.io" src="https://img.shields.io/crates/v/dofus-dmg-calculator?logoColor=E3A835&style=for-the-badge&color=9c7325&logo=rust" height="20">](https://crates.io/crates/dofus-dmg-calculator)
 [<img alt="crates.io" src="https://img.shields.io/crates/d/dofus-dmg-calculator?logoColor=E3A835&style=for-the-badge&color=152673" height="20">](https://crates.io/crates/dofus-dmg-calculator)
 
-Binary crate to compute the estimated damages one of your Dofus spell may
-inflict.
+A binary crate to compute damage estimations of Dofus spells.
 
 ## Installation
 
 Current release: 1.0.5
+
 ```
 $ cargo install dofus-dmg-calculator
 ```
 
+This crate can also be used as a library. Issue the following to add it to your
+`Cargo.toml`:
+
+```
+$ cargo add dofus-dmg-calculator
+```
+
 ## Usage
 
-Here are the available options:
+Available options:
 
 ```
 $ dofus-dmg-calculator --help
@@ -40,10 +47,11 @@ Version: 1.0.5
 Author: Patacode <pata.codegineer@gmail.com>
 ```
 
-And here is an example which computes the estimated damages of a spell
-inflicting `9-11 (12-14)` (meaning 9 to 11 damages by default and 12 to 14 if a
-critical hit occurs), by a character having 128 points allocated in the
-spell's stat (e.g. agility) and 1 fixed damage:
+Example:
+
+*Agility spell inflicting `9 - 11 (12 - 14)` (i.e. 9 to 11 damages by default
+and 12 to 14 on critical hit) by a character having 128 points allocated in
+agility stat and 1 point in fixed agility damage:*
 
 ```
 $ dofus-dmg-calculator \
