@@ -42,7 +42,6 @@ jobs:
         with:
           name: source-code
           path: ./
-          retention-days: 1
 
   build:
     name: Build crate
@@ -60,16 +59,14 @@ jobs:
         with:
           name: target
           path: ./target
-          retention-days: 1
+
   test:
     name: Test crate
     runs-on: ubuntu-latest
     needs: [prepare, build]
     steps:
-      - name: Fetch production artifacts
+      - name: Fetch source code and production artifacts
         uses: actions/download-artifact@v4
-        with:
-          name: target
       - name: Check code formatting
         run: cargo fmt --check
       - name: Run library unit tests
@@ -81,6 +78,7 @@ jobs:
       - name: Run benchmarks
         run: cargo bench
         if: ${{ success() && inputs.withBenchmarking }}
+
   deploy:
     name: Deploy crate
     runs-on: ubuntu-latest
@@ -88,14 +86,14 @@ jobs:
     steps:
       - name: Fetch production artifacts
         uses: actions/download-artifact@v4
-        with:
-          name: target
       - name: Trigger new deployment
         run: cargo release ${{ inputs.bumpLevel }} --execute
+
   cleanup:
     name: Cleanup artifacts
     runs-on: ubuntu-latest
     needs: [prepare, build, test, deploy]
+    if: ${{ always() }}
     steps:
       - name: Delete all archived artifacts
         uses: geekyeggo/delete-artifact@v5
