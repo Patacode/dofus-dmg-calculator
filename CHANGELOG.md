@@ -9,6 +9,14 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Added
+
+- GitHub action with manual workflow to release new crate versions
+
+### Changed
+
+- Some code and test refactoring
+
 ## [1.0.6] - 2025-03-25
 
 ### Added
