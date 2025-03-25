@@ -21,6 +21,7 @@ proper replacement tags
 
 - Custom rust formatter config to meet own standard
 - Improve sentences quality in README and crate description
+- Improve namings in crate source code
 
 ### Fixed
 
