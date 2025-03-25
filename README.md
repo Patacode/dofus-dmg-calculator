@@ -4,7 +4,7 @@
 [<img alt="crates.io" src="https://img.shields.io/crates/v/dofus-dmg-calculator?logoColor=E3A835&style=for-the-badge&color=9c7325&logo=rust" height="20">](https://crates.io/crates/dofus-dmg-calculator)
 [<img alt="crates.io" src="https://img.shields.io/crates/d/dofus-dmg-calculator?logoColor=E3A835&style=for-the-badge&color=152673" height="20">](https://crates.io/crates/dofus-dmg-calculator)
 
-A binary crate to compute damage estimations of Dofus spells.
+A binary crate to estimate Dofus spells' output damage
 
 ## Installation
 
