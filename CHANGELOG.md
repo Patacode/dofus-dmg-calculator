@@ -16,7 +16,7 @@ and this project adheres to
 - Improve replacement hook on crate release to also add unreleased section with
 proper replacement tags
 - Improve README with note regarding crate uses as library
-- Unit tests
+- Unit and integration tests
 - Benchmarking
 
 ### Changed
@@ -24,10 +24,6 @@ proper replacement tags
 - Custom rust formatter config to meet own standard
 - Improve sentences quality in README and crate description
 - Improve namings in crate source code
-
-### Fixed
-
-- Add missing listed feature in changelog of version 1.0.5 
 
 ## [1.0.5] - 2025-03-24
 
