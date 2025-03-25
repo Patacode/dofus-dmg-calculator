@@ -1,7 +1,7 @@
 use test_bin::get_test_bin;
 
 #[test]
-fn it_outputs_correct_damage_estimation_with_no_args() {
+fn it_outputs_correct_dmg_estimation_with_no_args() {
     let mut cmd = get_test_bin("dofus-dmg-calculator");
     let output = cmd.output().expect("Failed to execute command");
     let expected = "Damage estimation = 0 - 0 (0 - 0)\n";
@@ -12,7 +12,7 @@ fn it_outputs_correct_damage_estimation_with_no_args() {
 }
 
 #[test]
-fn it_outputs_correct_damage_estimation_with_all_args() {
+fn it_outputs_correct_dmg_estimation_with_all_args() {
     let mut cmd = get_test_bin("dofus-dmg-calculator");
 
     cmd
@@ -33,7 +33,7 @@ fn it_outputs_correct_damage_estimation_with_all_args() {
 }
 
 #[test]
-fn it_outputs_correct_damage_estimation_with_some_args() {
+fn it_outputs_correct_dmg_estimation_with_some_args() {
     let mut cmd = get_test_bin("dofus-dmg-calculator");
 
     cmd
