@@ -103,8 +103,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           merge-multiple: true
+      - name: Trigger new deployment in dry run mode
+        run: cargo release ${{ inputs.bumpLevel }} --allow-dirty
+        if: ${{ inputs.dryRun }}
       - name: Trigger new deployment
-        run: cargo release ${{ inputs.bumpLevel }} ${{ inputs.dryRun && '' || '--execute' }}
+        run: cargo release ${{ inputs.bumpLevel }} --execute --allow-dirty
+        if: ${{ !inputs.dryRun }}
 
   cleanup:
     name: Cleanup artifacts
