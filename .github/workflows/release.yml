@@ -35,10 +35,12 @@ jobs:
           echo "Bump level: $BUMP_LEVEL"
           echo "Integration tests: $WITH_INTEGRATION_TESTS"
           echo "Benchmarking: $WITH_BENCHMARKING"
+          echo "Dry run: $DRY_RUN"
         env:
           BUMP_LEVEL: ${{ inputs.bumpLevel }}
           WITH_INTEGRATION_TESTS: ${{ inputs.withIntegrationTests }}
           WITH_BENCHMARKING: ${{ inputs.withBenchmarking }}
+          DRY_RUN: ${{ inputs.dryRun }}
       - name: Checkout latest changes
         uses: actions/checkout@v4
       - name: Archive latest changes
