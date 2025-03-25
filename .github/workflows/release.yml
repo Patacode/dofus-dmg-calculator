@@ -13,13 +13,15 @@ on:
           - minor
           - major
       withIntegrationTests:
-        description: "Enable integration tests execution"
+        description: "Execute integration tests"
         required: true
         type: boolean
       withBenchmarking:
-        description: "Enable benchmarks execution"
+        description: "Execute benchmarks"
         required: false
         type: boolean
+      dryRun:
+        description: "Deploy in dry run mode"
 
 jobs:
   prepare:
@@ -40,7 +42,7 @@ jobs:
       - name: Archive latest changes
         uses: actions/upload-artifact@v4
         with:
-          name: source-code
+          name: crate-source-code
           path: ./
 
   build:
@@ -51,14 +53,13 @@ jobs:
       - name: Fetch latest changes
         uses: actions/download-artifact@v4
         with:
-          name: source-code
-          path: ./
+          name: crate-source-code
       - name: Generate production-ready artifacts
         run: cargo build --release --verbose
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: target
+          name: crate-target
           path: ./target
 
   test:
@@ -66,15 +67,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [prepare, build]
     steps:
-      - name: Fetch source code
+      - name: Fetch source code and production artifacts
         uses: actions/download-artifact@v4
         with:
-          name: source-code
-          path: ./
-      - name: Fetch production artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: target
+          name: crate-*
       - name: Check code formatting
         run: cargo fmt --check
       - name: Run library unit tests
@@ -96,23 +92,15 @@ jobs:
         uses: baptiste0928/cargo-install@v3
         with:
           crate: cargo-release
-          tag: "0.25.17"
-      - name: Fetch cargo-release from cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cargo/bin/cargo-release
-          key: cargo-release
-      - name: Fetch source code
+          version: "0.25.17"
+      - name: Fetch source code and production artifacts
         uses: actions/download-artifact@v4
         with:
-          name: source-code
-          path: ./
-      - name: Fetch production artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: target
+          name: crate-*
       - name: Trigger new deployment
-        run: cargo release ${{ inputs.bumpLevel }} --execute
+        run: cargo release ${{ inputs.bumpLevel }} $WITH_DRY_RUN
+        env:
+          WITH_DRY_RUN: ${{ inputs.dryRun && '--execute' || '' }}
 
   cleanup:
     name: Cleanup artifacts
