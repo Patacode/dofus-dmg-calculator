@@ -137,6 +137,10 @@ jobs:
         with:
           crate: cargo-release
           version: "0.25.17"
+      - name: Setup git
+        run: |
+          git config user.email "pata.codegineer@gmail.com"
+          git config user.name "Patacode"
       - name: Trigger new deployment
         run: cargo release ${{ inputs.bumpLevel }} --execute --no-confirm --no-verify
 
