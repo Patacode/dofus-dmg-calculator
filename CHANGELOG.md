@@ -9,6 +9,12 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Fixed
+
+- add missing tag due to broken pipeline
+
+## [1.0.7] - 2025-03-26
+
 ### Added
 
 - GitHub action with manual workflow to release new crate versions
