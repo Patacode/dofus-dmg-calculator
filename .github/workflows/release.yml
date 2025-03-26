@@ -139,6 +139,7 @@ jobs:
           version: "0.25.17"
       - name: Trigger new deployment
         run: |
+          echo ${{ inputs.enabledDeploymentDryRun }}
           cargo release ${{ inputs.bumpLevel }} ${{ inputs.enabledDeploymentDryRun && '' || '--execute' }}
 
   cleanup:
