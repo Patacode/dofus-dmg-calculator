@@ -9,6 +9,8 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+## [1.0.8] - 2025-03-26
+
 ### Fixed
 
 - add missing tag due to broken pipeline

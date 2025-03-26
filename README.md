@@ -8,7 +8,7 @@ A binary crate to estimate Dofus spells' output damage
 
 ## Installation
 
-Current release: 1.0.7
+Current release: 1.0.8
 
 ```
 $ cargo install dofus-dmg-calculator
@@ -43,7 +43,7 @@ Options:
   -h, --help                Print help
   -V, --version             Print version
 
-Version: 1.0.7
+Version: 1.0.8
 Author: Patacode <pata.codegineer@gmail.com>
 ```
 
