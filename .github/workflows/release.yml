@@ -34,7 +34,7 @@ on:
 
 jobs:
   announce:
-    name: Report deployment metadata
+    name: Report
     runs-on: ubuntu-latest
     steps:
       - name: Print metadata
@@ -52,7 +52,7 @@ jobs:
           DRY_RUN: ${{ inputs.enabledDeploymentDryRun }}
 
   build:
-    name: Build crate
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout latest changes
@@ -69,7 +69,7 @@ jobs:
           retention-days: 1
 
   formatting-test:
-    name: Test crate format
+    name: Formatting test
     runs-on: ubuntu-latest
     needs: [build]
     steps:
@@ -81,7 +81,7 @@ jobs:
         run: cargo fmt --check
 
   unit-test:
-    name: Test crate library code
+    name: Unit test
     runs-on: ubuntu-latest
     needs: [build]
     steps:
@@ -93,7 +93,7 @@ jobs:
         run: cargo test --release --lib
 
   integration-test:
-    name: Test crate binary execution
+    name: Integration test
     runs-on: ubuntu-latest
     needs: [build]
     if: ${{ inputs.enabledIntegrationTests }}
@@ -106,7 +106,7 @@ jobs:
         run: cargo test --release --test integration_tests
 
   benchmark:
-    name: Benchmark crate
+    name: Benchmark
     runs-on: ubuntu-latest
     needs: [build]
     if: ${{ inputs.enabledBenchmarking }}
@@ -119,7 +119,7 @@ jobs:
         run: cargo bench --profile release
 
   deploy:
-    name: Deploy crate
+    name: Deploy
     runs-on: ubuntu-latest
     needs: [formatting-test, unit-test, integration-test, benchmark]
     if: ${{ !failure() && !inputs.enabledDeploymentDryRun }}
@@ -141,7 +141,7 @@ jobs:
         run: cargo release ${{ inputs.bumpLevel }} --execute --no-confirm --no-verify
 
   deploy-dryrun:
-    name: Dry run deploy
+    name: Deploy dry run
     runs-on: ubuntu-latest
     needs: [formatting-test, unit-test, integration-test, benchmark]
     if: ${{ !failure() && inputs.enabledDeploymentDryRun }}
@@ -163,7 +163,7 @@ jobs:
         run: cargo release ${{ inputs.bumpLevel }} --no-confirm --no-verify
 
   cleanup:
-    name: Cleanup artifacts
+    name: Cleanup
     runs-on: ubuntu-latest
     needs: [build, deploy, deploy-dryrun]
     if: ${{ always() }}
