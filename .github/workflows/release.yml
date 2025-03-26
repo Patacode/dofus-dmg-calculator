@@ -138,7 +138,7 @@ jobs:
           crate: cargo-release
           version: "0.25.17"
       - name: Trigger new deployment
-        run: cargo release ${{ inputs.bumpLevel }} --execute
+        run: cargo release ${{ inputs.bumpLevel }} --execute --no-confirm --no-verify
 
   deploy-dryrun:
     name: Dry run deploy
@@ -160,7 +160,7 @@ jobs:
           crate: cargo-release
           version: "0.25.17"
       - name: Trigger new deployment
-        run: cargo release ${{ inputs.bumpLevel }}
+        run: cargo release ${{ inputs.bumpLevel }} --no-confirm --no-verify
 
   cleanup:
     name: Cleanup artifacts
