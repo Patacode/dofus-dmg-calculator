@@ -34,7 +34,7 @@ on:
 
 jobs:
   announce:
-    name: Print deployment metadata
+    name: Report deployment metadata
     runs-on: ubuntu-latest
     steps:
       - name: Print metadata
