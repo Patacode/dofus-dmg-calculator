@@ -5,121 +5,148 @@ on:
     inputs:
       bumpLevel:
         description: "Bump level"
-        required: true
         default: "patch"
         type: choice
         options:
           - patch
           - minor
           - major
-      withIntegrationTests:
+      profile:
+        description: "Cargo profile"
+        default: "release"
+        type: choice
+        options:
+          - dev
+          - release
+          - test
+          - bench
+      enabledIntegrationTests:
         description: "Execute integration tests"
-        required: true
         type: boolean
-      withBenchmarking:
+        default: true
+      enabledBenchmarking:
         description: "Execute benchmarks"
-        required: false
         type: boolean
-      dryRun:
+      enabledDeploymentDryRun:
         description: "Deploy in dry run mode"
-        required: false
         type: boolean
+        default: true
 
 jobs:
-  prepare:
-    name: Prepare data for deployment
+  announce:
+    name: Print deployment metadata
     runs-on: ubuntu-latest
     steps:
       - name: Print metadata
         run: |
           echo "Bump level: $BUMP_LEVEL"
-          echo "Integration tests: $WITH_INTEGRATION_TESTS"
-          echo "Benchmarking: $WITH_BENCHMARKING"
+          echo "Profile: $PROFILE"
+          echo "Integration tests: $INTEGRATION_TESTS"
+          echo "Benchmarking: $BENCHMARKING"
           echo "Dry run: $DRY_RUN"
         env:
           BUMP_LEVEL: ${{ inputs.bumpLevel }}
-          WITH_INTEGRATION_TESTS: ${{ inputs.withIntegrationTests }}
-          WITH_BENCHMARKING: ${{ inputs.withBenchmarking }}
-          DRY_RUN: ${{ inputs.dryRun }}
-      - name: Checkout latest changes
-        uses: actions/checkout@v4
-      - name: Archive latest changes
-        uses: actions/upload-artifact@v4
-        with:
-          name: source-code
-          path: ./
-          include-hidden-files: true
+          PROFILE: ${{ inputs.profile }}
+          INTEGRATION_TESTS: ${{ inputs.enabledIntegrationTests }}
+          BENCHMARKING: ${{ inputs.enabledBenchmarking }}
+          DRY_RUN: ${{ inputs.enabledDeploymentDryRun }}
 
   build:
     name: Build crate
     runs-on: ubuntu-latest
-    needs: prepare
     steps:
-      - name: Fetch latest changes
-        uses: actions/download-artifact@v4
-        with:
-          name: source-code
+      - name: Checkout latest changes
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain  
+        uses: dtolnay/rust-toolchain@stable
       - name: Generate production-ready artifacts
         run: cargo build --release --verbose
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: target
+          name: crate-artifacts
           path: ./target
-          include-hidden-files: true
+          retention-days: 1
 
-  test:
-    name: Test crate
+  formatting-test:
+    name: Test crate format
     runs-on: ubuntu-latest
-    needs: [prepare, build]
+    needs: [build]
     steps:
-      - name: Fetch source code and production artifacts
-        uses: actions/download-artifact@v4
-        with:
-          merge-multiple: true
+      - name: Checkout latest changes
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain  
+        uses: dtolnay/rust-toolchain@stable
       - name: Check code formatting
         run: cargo fmt --check
-      - name: Run library unit tests
-        run: cargo test --lib
-        if: ${{ success() }}
+
+  unit-test:
+    name: Test crate library code
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Checkout latest changes
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain  
+        uses: dtolnay/rust-toolchain@stable
+      - name: Run unit tests
+        run: cargo test --release --lib
+
+  integration-test:
+    name: Test crate binary execution
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: ${{ inputs.enabledIntegrationTests }}
+    steps:
+      - name: Checkout latest changes
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain  
+        uses: dtolnay/rust-toolchain@stable
       - name: Run integration tests
-        run: cargo test --test integration_tests
-        if: ${{ success() && inputs.withIntegrationTests }}
+        run: cargo test --release --test integration_tests
+
+  benchmark:
+    name: Benchmark crate
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: ${{ inputs.enabledBenchmarking }}
+    steps:
+      - name: Checkout latest changes
+        uses: actions/checkout@v4
+      - name: Install Rust toolchain  
+        uses: dtolnay/rust-toolchain@stable
       - name: Run benchmarks
-        run: cargo bench
-        if: ${{ success() && inputs.withBenchmarking }}
+        run: cargo bench --profile release
 
   deploy:
     name: Deploy crate
     runs-on: ubuntu-latest
-    needs: [prepare, build, test]
+    needs: [formatting-test, unit-test, integration-test, benchmark]
     steps:
+      - name: Checkout latest changes
+        uses: actions/checkout@v4
+      - name: Fetch production artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: crate-artifacts
+      - name: Install Rust toolchain  
+        uses: dtolnay/rust-toolchain@stable
       - name: Install cargo-release from crates.io
         uses: baptiste0928/cargo-install@v3
         with:
           crate: cargo-release
           version: "0.25.17"
-      - name: Fetch source code and production artifacts
-        uses: actions/download-artifact@v4
-        with:
-          merge-multiple: true
-      - name: Trigger new deployment in dry run mode
-        run: cargo release ${{ inputs.bumpLevel }} --allow-dirty
-        if: ${{ inputs.dryRun }}
       - name: Trigger new deployment
-        run: cargo release ${{ inputs.bumpLevel }} --execute --allow-dirty
-        if: ${{ !inputs.dryRun }}
+        run: cargo release ${{ inputs.bumpLevel }} ${{ inputs.dryRun && '' || '--execute' }}
 
   cleanup:
     name: Cleanup artifacts
     runs-on: ubuntu-latest
-    needs: [prepare, build, test, deploy]
+    needs: [build, deploy]
     if: ${{ always() }}
     steps:
       - name: Delete all archived artifacts
         uses: geekyeggo/delete-artifact@v5
         with:
           failOnError: false
-          name: |
-            target
-            source-code
+          name: crate-artifacts
