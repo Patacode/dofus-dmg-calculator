@@ -59,9 +59,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Rust toolchain  
         uses: dtolnay/rust-toolchain@stable
-      - name: Generate production-ready artifacts
-        run: cargo build --release --verbose
-      - name: Archive production artifacts
+      - name: Generate artifacts
+        run: cargo build --${{ inputs.profile }} --verbose
+      - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
           name: crate-artifacts
@@ -138,7 +138,7 @@ jobs:
           crate: cargo-release
           version: "0.25.17"
       - name: Trigger new deployment
-        run: cargo release ${{ inputs.bumpLevel }} ${{ inputs.dryRun && '' || '--execute' }}
+        run: cargo release ${{ inputs.bumpLevel }} ${{ inputs.dryRun == 'true' && '' || '--execute' }}
 
   cleanup:
     name: Cleanup artifacts
