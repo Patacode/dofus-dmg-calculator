@@ -106,7 +106,7 @@ jobs:
         run: cargo test --release --test integration_tests
 
   benchmark:
-    name: Benchmark
+    name: Benchmarking
     runs-on: ubuntu-latest
     needs: [build]
     if: ${{ inputs.enabledBenchmarking }}
