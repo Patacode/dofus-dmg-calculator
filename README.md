@@ -10,15 +10,16 @@ A binary crate to estimate Dofus spells' output damage
 
 Current release: [1.0.10](CHANGELOG.md#1.0.10)
 
-```
-$ cargo install dofus-dmg-calculator
+As binary:
+
+```bash
+cargo install dofus-dmg-calculator
 ```
 
-This crate can also be used as a library. Issue the following to add it to your
-`Cargo.toml`:
+As library:
 
-```
-$ cargo add dofus-dmg-calculator
+```bash
+cargo add dofus-dmg-calculator
 ```
 
 ## Usage
@@ -49,9 +50,9 @@ Author: Patacode <pata.codegineer@gmail.com>
 
 Example:
 
-*Agility spell inflicting `9 - 11 (12 - 14)` (i.e. 9 to 11 damages by default
+*Agility spell inflicting `9 - 11 (12 - 14)` (i.e. 9 to 11 damage by default
 and 12 to 14 on critical hit) by a character having 128 points allocated in
-agility stat and 1 point in fixed agility damage:*
+agility stat and 1 point in fixed agility damage (no power):*
 
 ```
 $ dofus-dmg-calculator \
