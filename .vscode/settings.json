@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
+    "clippy",
     "cmax",
     "cmin",
     "Codegineer",
@@ -7,10 +8,12 @@
     "dmax",
     "dmin",
     "dtolnay",
+    "Dwarnings",
     "geekyeggo",
     "MSVC",
     "Patacode",
     "rustc",
+    "RUSTFLAGS",
     "ureq"
   ],
   "editor.rulers": [
