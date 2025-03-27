@@ -11,6 +11,10 @@ and this project adheres to
 
 ## [1.0.12] - 2025-03-27 <a id="1.0.12"></a>
 
+### Removed
+
+- Mention of usage as library in README
+
 ### Fixed
 
 - SemVer Regex in pre release hooks now support version > 9
