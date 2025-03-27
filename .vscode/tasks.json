@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Format rust code",
+            "label": "Format Rust code",
             "type": "shell",
             "command": "cargo fmt",
             "presentation": {
