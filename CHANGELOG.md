@@ -9,6 +9,10 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Added
+
+- Webhook to update codegineer repo on push to main
+
 ## [1.0.14] - 2025-03-27 <a id="1.0.14"></a>
 
 ### Removed
