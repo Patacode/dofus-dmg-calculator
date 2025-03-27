@@ -9,11 +9,22 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Added
+
+- Rust linter
+- Test report visualization from deployment pipeline
+- Lint test in deployment pipeline
+
+### Changed
+
+- Optimize GitHub Action workflow to make it faster using various caching
+techniques
+
 ## [1.0.8] - 2025-03-26
 
 ### Fixed
 
-- add missing tag due to broken pipeline
+- Add missing tag due to broken pipeline
 
 ## [1.0.7] - 2025-03-26
 
