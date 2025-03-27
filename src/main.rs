@@ -57,12 +57,7 @@ struct Args {
     )]
     stat_points: u64,
 
-    #[arg(
-        short,
-        long,
-        default_value_t = 0,
-        help = "The character power"
-    )]
+    #[arg(short, long, default_value_t = 0, help = "The character power")]
     power: u64,
 
     #[arg(
