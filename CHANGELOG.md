@@ -9,7 +9,7 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
-## [1.0.9] - 2025-03-27
+## [1.0.9] - 2025-03-27 <a id="1.0.9"></a>
 
 ### Added
 
@@ -23,13 +23,13 @@ and this project adheres to
 - Optimize GitHub Action workflow to make it faster using various caching
 techniques
 
-## [1.0.8] - 2025-03-26
+## [1.0.8] - 2025-03-26 <a id="1.0.8"></a>
 
 ### Fixed
 
 - Add missing tag due to broken pipeline
 
-## [1.0.7] - 2025-03-26
+## [1.0.7] - 2025-03-26 <a id="1.0.7"></a>
 
 ### Added
 
@@ -39,7 +39,7 @@ techniques
 
 - Some code and test refactoring
 
-## [1.0.6] - 2025-03-25
+## [1.0.6] - 2025-03-25 <a id="1.0.6"></a>
 
 ### Added
 
@@ -55,7 +55,7 @@ proper replacement tags
 - Improve sentences quality in README and crate description
 - Improve namings in crate source code
 
-## [1.0.5] - 2025-03-24
+## [1.0.5] - 2025-03-24 <a id="1.0.5"></a>
 
 ### Added
 
@@ -69,13 +69,13 @@ proper replacement tags
 - Use `pre-release-replacements` config field instead of 'pre-release-hook' to
 update version in README.md
 
-## [1.0.4] - 2025-03-24
+## [1.0.4] - 2025-03-24 <a id="1.0.4"></a>
 
 ### Fixed
 
 - Add missing version specifier in commit message when releasing crate
 
-## [1.0.3] - 2025-03-24
+## [1.0.3] - 2025-03-24 <a id="1.0.3"></a>
 
 ### Added
 
@@ -86,7 +86,7 @@ version specifications in README file
 
 - Correct version specifications in README to match latest version
 
-## [1.0.2] - 2025-03-24
+## [1.0.2] - 2025-03-24 <a id="1.0.2"></a>
 
 ### Changed
 
@@ -97,7 +97,7 @@ bit range from 32 to 64 bits
 
 - Correct version specifications in README to match latest version
 
-## [1.0.1] - 2025-03-24
+## [1.0.1] - 2025-03-24 <a id="1.0.1"></a>
 
 ### Changed
 
@@ -107,7 +107,7 @@ bit range from 32 to 64 bits
 
 - Remove template language specifier in README to avoid weird-looking snippet
 
-## [1.0.0] - 2025-03-24
+## [1.0.0] - 2025-03-24 <a id="1.0.0"></a>
 
 ### Added
 
