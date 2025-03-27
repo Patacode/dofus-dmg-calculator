@@ -162,8 +162,8 @@ jobs:
           version: "0.25.17"
       - name: Setup git
         run: |
-          git config user.email "pata.codegineer@gmail.com"
-          git config user.name "Patacode"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
       - name: Trigger new deployment
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
