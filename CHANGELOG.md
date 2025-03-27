@@ -9,6 +9,10 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Fixed
+
+- SemVer Regex in pre release hooks now support version > 9
+
 ## [1.0.11] - 2025-03-27 <a id="1.0.11"></a>
 
 ### Changed
