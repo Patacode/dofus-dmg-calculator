@@ -4,7 +4,8 @@ use clap::Parser;
 use dofus_dmg_calculator::compute_dmg_estimation;
 
 #[derive(Parser, Debug)]
-#[command(version, about, author, long_about = None)]
+#[command(version, author, long_about = None)]
+#[command(about = "Compute a Dofus spell damage estimation")]
 #[command(help_template = "\
 {before-help}
 {usage-heading} {usage}
@@ -20,7 +21,7 @@ struct Args {
         short = 'i',
         long = "default-min",
         default_value_t = 0,
-        help = "The minimum default damage of your spell"
+        help = "The spell minimum default damage"
     )]
     min_default_dmg: u64,
 
@@ -28,7 +29,7 @@ struct Args {
         short = 'j',
         long = "default-max",
         default_value_t = 0,
-        help = "The maximum default damage of your spell"
+        help = "The spell maximum default damage"
     )]
     max_default_dmg: u64,
 
@@ -36,7 +37,7 @@ struct Args {
         short = 'k',
         long = "crit-min",
         default_value_t = 0,
-        help = "The minimum critical damage of your spell"
+        help = "The spell minimum critical damage"
     )]
     min_crit_dmg: u64,
 
@@ -44,7 +45,7 @@ struct Args {
         short = 'l',
         long = "crit-max",
         default_value_t = 0,
-        help = "The maximum critical damage of your spell"
+        help = "The spell maximum critical damage"
     )]
     max_crit_dmg: u64,
 
@@ -52,7 +53,7 @@ struct Args {
         short,
         long,
         default_value_t = 0,
-        help = "The stat points of your spell's type your character has"
+        help = "The character stat points"
     )]
     stat_points: u64,
 
@@ -60,7 +61,7 @@ struct Args {
         short,
         long,
         default_value_t = 0,
-        help = "The power of your character"
+        help = "The character power"
     )]
     power: u64,
 
@@ -68,14 +69,14 @@ struct Args {
         short = 'f',
         long = "fixed-dmg",
         default_value_t = 0,
-        help = "The fixed damage of your spell's type your character has"
+        help = "The character fixed damage"
     )]
     fixed_dmg: u64,
 
     #[arg(
         short = 'a',
         long = "author",
-        action = clap::ArgAction::SetTrue, help = "Print author infos"
+        action = clap::ArgAction::SetTrue, help = "Print author"
     )]
     show_author: bool,
 }
