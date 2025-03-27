@@ -9,6 +9,11 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Removed
+
+- criterion and test_bin from final archive
+- suggestions and usage clap features
+
 ## [1.0.13] - 2025-03-27 <a id="1.0.13"></a>
 
 ### Removed
