@@ -9,6 +9,8 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+## [1.0.10] - 2025-03-27 <a id="1.0.10"></a>
+
 ### Added
 
 - Link to latest version fo CHANGELOG in README
