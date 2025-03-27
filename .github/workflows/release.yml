@@ -62,9 +62,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
-        id: toolchain
       - name: Generate artifacts
-        run: cargo +${{ steps.toolchain.outputs.name }} build --${{ inputs.profile }} --verbose
+        run: cargo build --${{ inputs.profile }} --verbose
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -81,9 +80,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
-        id: toolchain
       - name: Check code formatting
-        run: cargo +${{ steps.toolchain.outputs.name }} fmt --check
+        run: cargo fmt --check
 
   unit-test:
     name: Unit test
@@ -94,9 +92,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
-        id: toolchain
       - name: Run unit tests
-        run: cargo +${{ steps.toolchain.outputs.name }} test --release --lib
+        run: cargo test --release --lib
 
   integration-test:
     name: Integration test
@@ -108,9 +105,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
-        id: toolchain
       - name: Run integration tests
-        run: cargo +${{ steps.toolchain.outputs.name }} test --release --test integration_tests
+        run: cargo test --release --test integration_tests
 
   benchmark:
     name: Benchmarking
@@ -122,9 +118,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
-        id: toolchain
       - name: Run benchmarks
-        run: cargo +${{ steps.toolchain.outputs.name }} bench --profile release
+        run: cargo bench --profile release
 
   deploy:
     name: Deploy
@@ -140,7 +135,6 @@ jobs:
           name: crate-artifacts
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
-        id: toolchain
       - name: Install cargo-release from crates.io
         uses: baptiste0928/cargo-install@v3
         with:
@@ -153,7 +147,7 @@ jobs:
       - name: Trigger new deployment
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
-        run: cargo +${{ steps.toolchain.outputs.name }} release ${{ inputs.bumpLevel }} --execute --no-confirm --no-verify
+        run: cargo release ${{ inputs.bumpLevel }} --execute --no-confirm --no-verify
 
   deploy-dryrun:
     name: Deploy dry run
@@ -169,14 +163,13 @@ jobs:
           name: crate-artifacts
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
-        id: toolchain
       - name: Install cargo-release from crates.io
         uses: baptiste0928/cargo-install@v3
         with:
           crate: cargo-release
           version: "0.25.17"
       - name: Trigger new deployment
-        run: cargo +${{ steps.toolchain.outputs.name }} release ${{ inputs.bumpLevel }} --no-confirm --no-verify
+        run: cargo release ${{ inputs.bumpLevel }} --no-confirm --no-verify
 
   cleanup:
     name: Cleanup
