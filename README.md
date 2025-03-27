@@ -29,19 +29,19 @@ Available options:
 $ dofus-dmg-calculator --help
 Usage: dofus-dmg-calculator [OPTIONS]
 
-Compute the estimated damages your Dofus spell may inflict
+Compute a Dofus spell damage estimation
 
 Options:
-  -i, --default-min <DMIN>  The minimum default damage of your spell [default: 0]
-  -j, --default-max <DMAX>  The maximum default damage of your spell [default: 0]
-  -k, --crit-min <CMIN>     The minimum critical damage of your spell [default: 0]
-  -l, --crit-max <CMAX>     The maximum critical damage of your spell [default: 0]
-  -s, --stat <STAT>         The stat points of your spell's type your character has [default: 0]
-  -p, --power <POWER>       The power of your character [default: 0]
-  -f, --fixed-dmg <DFIXED>  The fixed damage of your spell's type your character has [default: 0]
-  -a, --author              Print author infos
-  -h, --help                Print help
-  -V, --version             Print version
+  -i, --default-min <MIN_DEFAULT_DMG>  The spell minimum default damage [default: 0]
+  -j, --default-max <MAX_DEFAULT_DMG>  The spell maximum default damage [default: 0]
+  -k, --crit-min <MIN_CRIT_DMG>        The spell minimum critical damage [default: 0]
+  -l, --crit-max <MAX_CRIT_DMG>        The spell maximum critical damage [default: 0]
+  -s, --stat-points <STAT_POINTS>      The character stat points [default: 0]
+  -p, --power <POWER>                  The character power [default: 0]
+  -f, --fixed-dmg <FIXED_DMG>          The character fixed damage [default: 0]
+  -a, --author                         Print author
+  -h, --help                           Print help
+  -V, --version                        Print version
 
 Version: 1.0.10
 Author: Patacode <pata.codegineer@gmail.com>
