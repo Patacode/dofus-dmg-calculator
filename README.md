@@ -8,7 +8,7 @@ A binary crate to estimate Dofus spells' output damage
 
 ## Installation
 
-Current release: [1.0.10](CHANGELOG.md#1.0.10)
+Current release: [1.0.110](CHANGELOG.md#1.0.110)
 
 As binary:
 
@@ -44,7 +44,7 @@ Options:
   -h, --help                           Print help
   -V, --version                        Print version
 
-Version: 1.0.10
+Version: 1.0.110
 Author: Patacode <pata.codegineer@gmail.com>
 ```
 
