@@ -14,6 +14,7 @@ and this project adheres to
 - Rust linter
 - Test report visualization from deployment pipeline
 - Lint test in deployment pipeline
+- VSCode task to format code
 
 ### Changed
 
