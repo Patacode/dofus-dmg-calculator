@@ -9,15 +9,15 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Removed
+
+- Mention of usage as library in README
+
 ### Fixed
 
 - Prevent deploy job from running of cancelled workflow
 
 ## [1.0.12] - 2025-03-27 <a id="1.0.12"></a>
-
-### Removed
-
-- Mention of usage as library in README
 
 ### Fixed
 
