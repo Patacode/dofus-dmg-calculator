@@ -61,8 +61,8 @@ struct Args {
     power: u64,
 
     #[arg(
-        short = 'f',
-        long = "fixed-dmg",
+        short,
+        long,
         default_value_t = 0,
         help = "The character fixed damage"
     )]
