@@ -8,8 +8,9 @@
             "type": "shell",
             "command": "cargo fmt",
             "presentation": {
-                "reveal": "silent",
-            }
+                "reveal": "silent"
+            },
+            "problemMatcher": []
         }
     ]
 }
