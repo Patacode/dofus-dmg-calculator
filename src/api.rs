@@ -1,5 +1,22 @@
 use crate::impls;
 
+/// Computes the damage estimation of a Dofus spell.
+/// 
+/// The spell is considered to do `base_damage` damage, by
+/// a character having `fixed_damage` fixed damage and `stat_points`
+/// stat points allocated to the spell's element, as well as `power`
+/// power.
+///
+/// # Arguments
+///
+/// * `base_damage` - The spell base damage
+/// * `fixed_damage` - The character fixed damage
+/// * `stat_points` - The character stat points
+/// * `power` - The character power
+///
+/// # Returns
+///
+/// The damage estimation of a Dofus spell.
 pub fn compute_dmg_estimation(
     base_damage: u64,
     fixed_damage: u64,
@@ -9,6 +26,26 @@ pub fn compute_dmg_estimation(
     impls::compute_dmg_estimation(base_damage, fixed_damage, stat_points, power)
 }
 
+/// Computes the damage estimation of a Dofus spell inflicted on an enemy with
+/// potential resistances.
+/// 
+/// This function behaves the same as [`compute_dmg_estimation`], but include
+/// fixed and variable enemy resistances in the calculation.
+///
+/// # Arguments
+///
+/// * `base_damage` - The spell base damage
+/// * `fixed_damage` - The character fixed damage
+/// * `stat_points` - The character stat points
+/// * `power` - The character power
+/// * `fixed_res` - The enemy fixed resistance
+/// * `variable_res` - The enemy variable resistance
+/// * ``
+///
+/// # Returns
+///
+/// The damage estimation of a Dofus spell inflicted on an enemy with potential
+/// resistances..
 pub fn compute_dmg_estimation_with_res(
     base_damage: u64,
     fixed_damage: u64,
