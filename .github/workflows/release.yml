@@ -109,7 +109,6 @@ jobs:
         if: ${{ inputs.enabledReportGeneration }}
         run: |
           cargo tarpaulin \
-            --profile ${{ inputs.profile }}
             --out Html \
             --exclude-files src/lib.rs src/main.rs benches/* tests/* \
             --output-dir target/tarpaulin
