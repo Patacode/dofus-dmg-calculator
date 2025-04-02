@@ -16,6 +16,7 @@ and this project adheres to
 ### Fixed
 
 - Licenses are now part of crate sources
+- Description of res-related CLI options state 'enemy' instead of 'character'
 
 ## [1.1.2] - 2025-04-02 <a id="1.1.2"></a>
 
