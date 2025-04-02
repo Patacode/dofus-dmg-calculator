@@ -9,6 +9,8 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+## [1.1.1] - 2025-04-02 <a id="1.1.1"></a>
+
 ### Changed
 
 - Split public/private api in different modules (facade pattern)

@@ -8,7 +8,7 @@ A binary crate to estimate Dofus spells' output damage
 
 ## Installation
 
-Current release: [1.1.0](CHANGELOG.md#1.1.0)
+Current release: [1.1.1](CHANGELOG.md#1.1.1)
 
 ```bash
 cargo install dofus-dmg-calculator
@@ -38,7 +38,7 @@ Options:
   -h, --help                           Print help
   -V, --version                        Print version
 
-Version: 1.1.0
+Version: 1.1.1
 Author: Patacode <pata.codegineer@gmail.com>
 ```
 
