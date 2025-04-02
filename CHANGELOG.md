@@ -16,6 +16,8 @@ and this project adheres to
 cargo-tarpaulin)
 - Script to install cargo-make if not yet installed, install dev tools and
 build project
+- Development section in README explaining how to install dev tools, run
+tests and so on
 
 ### Fixed
 
