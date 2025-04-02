@@ -9,6 +9,14 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Added
+
+- Cargo.lock file to ensure reproducible builds
+
+### Changed
+
+- Source content of binary package (only necessary stuff)
+
 ## [1.1.1] - 2025-04-02 <a id="1.1.1"></a>
 
 ### Changed
