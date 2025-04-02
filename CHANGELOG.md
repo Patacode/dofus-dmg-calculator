@@ -11,7 +11,7 @@ and this project adheres to
 
 ### Added
 
-- Rust doc for public functions
+- Rust doc for public functions and crate root
 
 ### Fixed
 
