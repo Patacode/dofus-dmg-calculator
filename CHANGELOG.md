@@ -15,6 +15,7 @@ and this project adheres to
 - CLI option to compute damage estimation with fixed and/or variable
 resistances
 - Example in README with fixed and variable resistances
+- Usage feature of clap crate
 
 ### Changed
 
