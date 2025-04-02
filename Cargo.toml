@@ -9,6 +9,13 @@ repository = "https://github.com/Patacode/dofus-dmg-calculator"
 documentation = "https://docs.rs/crate/dofus-dmg-calculator"
 keywords = ["dofus", "damage", "calculator", "utility", "spell"]
 categories = ["games", "command-line-utilities"]
+include = [
+    "src/**",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+]
 
 [dependencies]
 clap = { version = "4.5.32", default-features = false, features = ["std", "help", "color", "error-context", "derive", "usage"] }
