@@ -18,8 +18,8 @@ cargo install dofus-dmg-calculator
 
 Available options:
 
-```
-$ dofus-dmg-calculator --help
+```bash
+dofus-dmg-calculator --help
 Usage: dofus-dmg-calculator [OPTIONS]
 
 Compute a Dofus spell damage estimation
@@ -40,21 +40,37 @@ Version: 1.0.14
 Author: Patacode <pata.codegineer@gmail.com>
 ```
 
-Example:
+Examples:
 
 *Agility spell inflicting `9 - 11 (12 - 14)` (i.e. 9 to 11 damage by default
 and 12 to 14 on critical hit) by a character having 128 points allocated in
-agility stat and 1 point in fixed agility damage (no power):*
+agility stat and 1 point in fixed agility damage (no power and no resistances):*
 
-```
-$ dofus-dmg-calculator \
+```bash
+dofus-dmg-calculator \
   --default-min 9 \
   --default-max 11 \
   --crit-min 12 \
   --crit-max 14 \
-  --stat 128 \
+  --stat-points 128 \
   --fixed-dmg 1
 Damage estimation = 21 - 26 (28 - 32)
+```
+
+*Same scenario than above but against an enemy with 5 points in fixed agility
+resistance and 20% in variable agility resistance:*
+
+```bash
+dofus-dmg-calculator \
+  --default-min 9 \
+  --default-max 11 \
+  --crit-min 12 \
+  --crit-max 14 \
+  --stat-points 128 \
+  --fixed-dmg 1 \
+  --fixed-res 5 \
+  --variable-res 20
+Damage estimation = 13 - 16 (18 - 22)
 ```
 
 ## License
