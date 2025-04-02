@@ -9,12 +9,19 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Added
+
+- Rust doc for public functions
+
+### Fixed
+
+- Licenses are now part of crate sources
+
 ## [1.1.2] - 2025-04-02 <a id="1.1.2"></a>
 
 ### Added
 
 - Cargo.lock file to ensure reproducible builds
-- Rust doc for public functions
 
 ### Changed
 
