@@ -32,6 +32,8 @@ Options:
   -s, --stat-points <STAT_POINTS>      The character stat points [default: 0]
   -p, --power <POWER>                  The character power [default: 0]
   -f, --fixed-dmg <FIXED_DMG>          The character fixed damage [default: 0]
+  -x, --fixed-res <FIXED_RES>          The character fixed resistance [default: 0]
+  -r, --variable-res <VARIABLE_RES>    The character variable resistance [default: 0]
   -a, --author                         Print author
   -h, --help                           Print help
   -V, --version                        Print version
