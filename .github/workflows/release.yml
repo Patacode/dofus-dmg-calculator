@@ -11,15 +11,6 @@ on:
           - patch
           - minor
           - major
-      profile:
-        description: "Cargo profile"
-        default: "release"
-        type: choice
-        options:
-          - dev
-          - release
-          - test
-          - bench
       enabledLintTests:
         description: "Execute lint tests"
         type: boolean
@@ -53,16 +44,18 @@ jobs:
       - name: Print metadata
         run: |
           echo "Bump level: $BUMP_LEVEL"
-          echo "Profile: $PROFILE"
+          echo "Lint tests: $LINT_TESTS"
           echo "Integration tests: $INTEGRATION_TESTS"
           echo "Benchmarking: $BENCHMARKING"
           echo "Dry run: $DRY_RUN"
+          echo "Report generation: $REPORT_GENERATION"
         env:
           BUMP_LEVEL: ${{ inputs.bumpLevel }}
-          PROFILE: ${{ inputs.profile }}
+          LINT_TESTS: ${{ inputs.enabledLintTests }}
           INTEGRATION_TESTS: ${{ inputs.enabledIntegrationTests }}
           BENCHMARKING: ${{ inputs.enabledBenchmarking }}
           DRY_RUN: ${{ inputs.enabledDeploymentDryRun }}
+          REPORT_GENERATION: ${{ inputs.enabledReportGeneration }}
 
   build:
     name: Build
@@ -73,7 +66,7 @@ jobs:
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Generate artifacts
-        run: cargo build --${{ inputs.profile }} --verbose
+        run: cargo build --release --verbose
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -157,7 +150,7 @@ jobs:
       - name: Install Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Run benchmarks
-        run: cargo bench --profile release
+        run: cargo bench
 
   deploy:
     name: Deploy
