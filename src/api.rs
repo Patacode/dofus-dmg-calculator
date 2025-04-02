@@ -40,7 +40,6 @@ pub fn compute_dmg_estimation(
 /// * `power` - The character power
 /// * `fixed_res` - The enemy fixed resistance
 /// * `variable_res` - The enemy variable resistance
-/// * ``
 ///
 /// # Returns
 ///
