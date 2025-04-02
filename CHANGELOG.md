@@ -9,6 +9,16 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Added
+
+- Code coverage reporting with tarpaulin
+- Integration with cargo-make to install dev tools (cargo-release and
+cargo-tarpaulin)
+
+### Fixed
+
+- Help output in README
+
 ## [1.1.3] - 2025-04-02 <a id="1.1.3"></a>
 
 ### Added
