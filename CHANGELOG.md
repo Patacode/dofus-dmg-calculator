@@ -14,6 +14,7 @@ and this project adheres to
 ### Added
 
 - Cargo.lock file to ensure reproducible builds
+- Rust doc for public functions
 
 ### Changed
 
