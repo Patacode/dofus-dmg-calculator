@@ -2,7 +2,7 @@ use crate::impls;
 
 /// Computes the damage estimation of a Dofus spell.
 /// 
-/// The spell is considered to do `base_damage` damage, by
+/// The spell is considered to inflict `base_damage` damage, by
 /// a character having `fixed_damage` fixed damage and `stat_points`
 /// stat points allocated to the spell's element, as well as `power`
 /// power.
