@@ -14,6 +14,8 @@ and this project adheres to
 - Code coverage reporting with tarpaulin
 - Integration with cargo-make to install dev tools (cargo-release and
 cargo-tarpaulin)
+- Script to install cargo-make if not yet installed, install dev tools and
+build project
 
 ### Fixed
 
