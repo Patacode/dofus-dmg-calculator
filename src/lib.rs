@@ -1,5 +1,5 @@
 //! Utility functions to compute a Dofus spell damage estimation inflicted on
-//! an enemy with or without resistances. 
+//! an enemy with or without resistances.
 
 mod api;
 mod impls;

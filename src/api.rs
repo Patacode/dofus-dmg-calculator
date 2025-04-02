@@ -1,7 +1,7 @@
 use crate::impls;
 
 /// Computes the damage estimation of a Dofus spell.
-/// 
+///
 /// The spell is considered to inflict `base_damage` damage, by
 /// a character having `fixed_damage` fixed damage and `stat_points`
 /// stat points allocated to the spell's element, as well as `power`
@@ -28,7 +28,7 @@ pub fn compute_dmg_estimation(
 
 /// Computes the damage estimation of a Dofus spell inflicted on an enemy with
 /// potential resistances.
-/// 
+///
 /// This function behaves the same as [`compute_dmg_estimation`], but include
 /// fixed and variable enemy resistances in the calculation.
 ///
