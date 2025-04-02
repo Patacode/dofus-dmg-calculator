@@ -48,3 +48,23 @@ fn it_outputs_correct_dmg_estimation_with_some_args() {
     assert!(output.status.success());
     assert_eq!(actual, expected);
 }
+
+#[test]
+fn it_outputs_correct_dmg_estimation_with_res_args() {
+    let mut cmd = get_test_bin("dofus-dmg-calculator");
+
+    cmd.args(["-i", "9"])
+        .args(["-j", "11"])
+        .args(["-k", "12"])
+        .args(["-l", "14"])
+        .args(["-p", "12"])
+        .args(["-x", "3"])
+        .args(["-r", "30"]);
+
+    let output = cmd.output().expect("Failed to execute command");
+    let expected = "Damage estimation = 4 - 6 (7 - 8)\n";
+    let actual = String::from_utf8_lossy(&output.stdout);
+
+    assert!(output.status.success());
+    assert_eq!(actual, expected);
+}
