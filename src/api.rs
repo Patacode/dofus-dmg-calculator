@@ -44,7 +44,7 @@ pub fn compute_dmg_estimation(
 /// # Returns
 ///
 /// The damage estimation of a Dofus spell inflicted on an enemy with potential
-/// resistances..
+/// resistances.
 pub fn compute_dmg_estimation_with_res(
     base_damage: u64,
     fixed_damage: u64,
