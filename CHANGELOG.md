@@ -14,6 +14,7 @@ and this project adheres to
 - Webhook to update codegineer repo on push to main
 - CLI option to compute damage estimation with fixed and/or variable
 resistances
+- Example in README with fixed and variable resistances
 
 ### Changed
 
