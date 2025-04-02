@@ -12,6 +12,12 @@ and this project adheres to
 ### Added
 
 - Webhook to update codegineer repo on push to main
+- CLI option to compute damage estimation with fixed and/or variable
+resistances
+
+### Changed
+
+- Some code refactoring
 
 ## [1.0.14] - 2025-03-27 <a id="1.0.14"></a>
 
