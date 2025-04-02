@@ -69,9 +69,26 @@ struct Args {
     fixed_dmg: u64,
 
     #[arg(
+        short = 'x',
+        long,
+        default_value_t = 0,
+        help = "The character fixed resistance"
+    )]
+    fixed_res: u64,
+
+    #[arg(
+        short = 'r',
+        long,
+        default_value_t = 0,
+        help = "The character variable resistance"
+    )]
+    variable_res: u64,
+
+    #[arg(
         short = 'a',
         long = "author",
-        action = clap::ArgAction::SetTrue, help = "Print author"
+        action = clap::ArgAction::SetTrue,
+        help = "Print author"
     )]
     show_author: bool,
 }
