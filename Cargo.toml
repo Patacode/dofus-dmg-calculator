@@ -11,7 +11,7 @@ keywords = ["dofus", "damage", "calculator", "utility", "spell"]
 categories = ["games", "command-line-utilities"]
 
 [dependencies]
-clap = { version = "4.5.32", default-features = false, features = ["std", "help", "color", "error-context", "derive"] }
+clap = { version = "4.5.32", default-features = false, features = ["std", "help", "color", "error-context", "derive", "usage"] }
 
 [dev-dependencies]
 criterion = { version = "0.5.1", features = ["html_reports"] }
