@@ -72,7 +72,7 @@ struct Args {
         short = 'x',
         long,
         default_value_t = 0,
-        help = "The character fixed resistance"
+        help = "The enemy fixed resistance"
     )]
     fixed_res: u64,
 
@@ -80,7 +80,7 @@ struct Args {
         short = 'r',
         long,
         default_value_t = 0,
-        help = "The character variable resistance"
+        help = "The enemy variable resistance"
     )]
     variable_res: u64,
 
