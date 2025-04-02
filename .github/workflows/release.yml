@@ -35,6 +35,9 @@ on:
         description: "Deploy in dry run mode"
         type: boolean
         default: true
+      enabledReportGeneration:
+        description: "Generate HTML reports for code coverage and benchmarking"
+        type: boolean
 
 env:
   RUSTFLAGS: "-Dwarnings"
@@ -101,6 +104,22 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Run unit tests
         run: cargo test --release --lib
+      - name: Generate HTML report
+        id: generate_report
+        if: ${{ inputs.enabledReportGeneration }}
+        run: |
+          cargo tarpaulin \
+            --profile ${{ inputs.profile }}
+            --out Html \
+            --exclude-files src/lib.rs src/main.rs benches/* tests/* \
+            --output-dir target/tarpaulin
+      - name: Archive code coverage report
+        uses: actions/upload-artifact@v4
+        if: ${{ steps.generate_report.outcome == 'success' }}
+        with:
+          name: report-code-coverage
+          path: ./target/tarpaulin
+          retention-days: 1
 
   integration-test:
     name: Integration test
@@ -201,4 +220,5 @@ jobs:
         uses: geekyeggo/delete-artifact@v5
         with:
           failOnError: false
-          name: crate-artifacts
+          name: |
+            crate-artifacts
