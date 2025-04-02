@@ -9,16 +9,17 @@ repository = "https://github.com/Patacode/dofus-dmg-calculator"
 documentation = "https://docs.rs/crate/dofus-dmg-calculator"
 keywords = ["dofus", "damage", "calculator", "utility", "spell"]
 categories = ["games", "command-line-utilities"]
-include = [
-    "src/**",
-    "Cargo.toml",
-    "README.md",
-    "LICENSE",
-    "CHANGELOG.md",
-]
+include = ["src/**", "Cargo.toml", "README.md", "LICENSE", "CHANGELOG.md"]
 
 [dependencies]
-clap = { version = "4.5.32", default-features = false, features = ["std", "help", "color", "error-context", "derive", "usage"] }
+clap = { version = "4.5.32", default-features = false, features = [
+  "std",
+  "help",
+  "color",
+  "error-context",
+  "derive",
+  "usage",
+] }
 
 [dev-dependencies]
 criterion = { version = "0.5.1", features = ["html_reports"] }
@@ -28,10 +29,10 @@ test_bin = "0.4.0"
 pre-release-commit-message = "chore: prepare for release v{{version}}"
 tag-message = "Release {{crate_name}} version {{version}}"
 pre-release-replacements = [
-  {file="README.md", search="\\d+\\.\\d+\\.\\d+", replace="{{version}}"},
-  {file="CHANGELOG.md", search="@Unreleased", replace="{{version}}"},
-  {file="CHANGELOG.md", search="@ReleaseDate", replace="{{date}} <a id=\"{{version}}\"></a>"},
-  {file="CHANGELOG.md", search="\\[comment\\]: <> \\(@PlannedForNextRelease\\)", replace="[comment]: <> (@PlannedForNextRelease)\n## [@Unreleased] - @ReleaseDate\n"},
+  { file = "README.md", search = "\\d+\\.\\d+\\.\\d+", replace = "{{version}}" },
+  { file = "CHANGELOG.md", search = "@Unreleased", replace = "{{version}}" },
+  { file = "CHANGELOG.md", search = "@ReleaseDate", replace = "{{date}} <a id=\"{{version}}\"></a>" },
+  { file = "CHANGELOG.md", search = "\\[comment\\]: <> \\(@PlannedForNextRelease\\)", replace = "[comment]: <> (@PlannedForNextRelease)\n## [@Unreleased] - @ReleaseDate\n" },
 ]
 
 [[bench]]
