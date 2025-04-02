@@ -9,6 +9,18 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Added
+
+- Code coverage report generation in deployment pipeline
+
+### Removed
+
+- Profile selection option in deployment pipeline
+
+### Fixed
+
+- Deploy dry run job will not be executed if workflow cancelled
+
 ## [1.1.4] - 2025-04-02 <a id="1.1.4"></a>
 
 ### Added
