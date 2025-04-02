@@ -2,6 +2,7 @@ use clap::CommandFactory;
 use clap::Parser;
 
 use dofus_dmg_calculator::compute_dmg_estimation;
+use dofus_dmg_calculator::compute_dmg_estimation_with_res;
 
 #[derive(Parser, Debug)]
 #[command(version, author, long_about = None)]
@@ -106,29 +107,37 @@ fn main() {
         return;
     }
 
-    let min_default_dmg = compute_dmg_estimation(
+    let min_default_dmg = compute_dmg_estimation_with_res(
         args.min_default_dmg,
         args.fixed_dmg,
         args.stat_points,
         args.power,
+        args.fixed_res,
+        args.variable_res,
     );
-    let max_default_dmg = compute_dmg_estimation(
+    let max_default_dmg = compute_dmg_estimation_with_res(
         args.max_default_dmg,
         args.fixed_dmg,
         args.stat_points,
         args.power,
+        args.fixed_res,
+        args.variable_res,
     );
-    let min_crit_dmg = compute_dmg_estimation(
+    let min_crit_dmg = compute_dmg_estimation_with_res(
         args.min_crit_dmg,
         args.fixed_dmg,
         args.stat_points,
         args.power,
+        args.fixed_res,
+        args.variable_res,
     );
-    let max_crit_dmg = compute_dmg_estimation(
+    let max_crit_dmg = compute_dmg_estimation_with_res(
         args.max_crit_dmg,
         args.fixed_dmg,
         args.stat_points,
         args.power,
+        args.fixed_res,
+        args.variable_res,
     );
 
     println!(
