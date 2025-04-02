@@ -12,7 +12,9 @@ fn benchmark_function(c: &mut Criterion) {
                 .args(["-l", "14"])
                 .args(["-s", "128"])
                 .args(["-p", "12"])
-                .args(["-f", "1"]);
+                .args(["-f", "1"])
+                .args(["-x", "3"])
+                .args(["-r", "45"]);
 
             cmd.output()
         })
