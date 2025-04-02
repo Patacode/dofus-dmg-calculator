@@ -75,6 +75,45 @@ $ dofus-dmg-calculator \
 Damage estimation = 13 - 16 (18 - 22)
 ```
 
+## Development
+
+Install cargo-make, dev tools (i.e. cargo-tarpaulin and cargo-release), and
+build the package:
+
+```bash
+./bootstrap.sh
+```
+
+Run the tests:
+
+```bash
+cargo test # unit + integration tests
+cargo test --lib # unit tests
+cargo test --test integration_tests # integration tests
+```
+
+Perform code coverage (with HTML report generated under `target/tarpaulin`):
+
+```bash
+cargo tarpaulin \
+  --out Html \
+  --exclude-files src/lib.rs src/main.rs benches/* tests/* \
+  --output-dir target/tarpaulin
+```
+
+Benchmarking:
+
+```bash
+cargo bench
+```
+
+Run the binary:
+
+```bash
+cargo run # no args
+cargo run -- --help # with '--help' args
+```
+
 ## License
 
 Licensed under either of
