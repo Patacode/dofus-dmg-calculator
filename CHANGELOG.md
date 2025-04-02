@@ -13,6 +13,11 @@ and this project adheres to
 
 - Rust doc for public functions and crate root
 
+### Changed
+
+- Common logic to compute damage estimation extracted in separate private
+function
+
 ### Fixed
 
 - Licenses are now part of crate sources
