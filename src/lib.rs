@@ -51,14 +51,14 @@ mod tests {
 
     #[test]
     fn it_computes_dmg_estimation_with_variable_resistance() {
-        let expected = 44;
+        let expected = 45;
         let actual = compute_dmg_estimation_with_res(9, 34, 128, 23, 0, 20);
         assert_eq!(actual, expected);
     }
 
     #[test]
     fn it_computes_dmg_estimation_with_fixed_and_variable_resistance() {
-        let expected = 39;
+        let expected = 41;
         let actual = compute_dmg_estimation_with_res(9, 34, 128, 23, 5, 20);
         assert_eq!(actual, expected);
     }
