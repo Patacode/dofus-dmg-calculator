@@ -9,6 +9,8 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+## [1.1.3] - 2025-04-02 <a id="1.1.3"></a>
+
 ### Added
 
 - Rust doc for public functions and crate root
