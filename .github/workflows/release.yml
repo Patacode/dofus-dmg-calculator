@@ -79,7 +79,7 @@ jobs:
   formatting-test:
     name: Formatting test
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: build
     if: ${{ inputs.enabledFormattingTests }}
     steps:
       - name: Checkout latest changes
@@ -92,7 +92,7 @@ jobs:
   unit-test:
     name: Unit test
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: build
     if: ${{ inputs.enabledUnitTests }}
     steps:
       - name: Checkout latest changes
@@ -105,7 +105,7 @@ jobs:
   integration-test:
     name: Integration test
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: build
     if: ${{ inputs.enabledIntegrationTests }}
     steps:
       - name: Checkout latest changes
@@ -118,7 +118,7 @@ jobs:
   lint-test:
     name: Lint test
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: build
     if: ${{ inputs.enabledLintTests }}
     steps:
       - name: Checkout latest changes
@@ -131,8 +131,8 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    needs: [formatting-test, unit-test, integration-test, lint-test]
-    if: ${{ !cancelled() && !failure() && !inputs.enabledDeploymentDryRun }}
+    needs: [build, formatting-test, unit-test, integration-test, lint-test]
+    if: ${{ !inputs.enabledDeploymentDryRun }}
     steps:
       - name: Checkout latest changes
         uses: actions/checkout@v4
@@ -159,8 +159,8 @@ jobs:
   deploy-dryrun:
     name: Deploy dry run
     runs-on: ubuntu-latest
-    needs: [formatting-test, unit-test, integration-test, lint-test]
-    if: ${{ !cancelled() && !failure() && inputs.enabledDeploymentDryRun }}
+    needs: [build, formatting-test, unit-test, integration-test, lint-test]
+    if: ${{ inputs.enabledDeploymentDryRun }}
     steps:
       - name: Checkout latest changes
         uses: actions/checkout@v4
