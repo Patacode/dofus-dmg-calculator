@@ -9,6 +9,8 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+## [1.1.5] - 2025-04-03 <a id="1.1.5"></a>
+
 ### Added
 
 - Boolean options in deployment pipeline to enable/disable unit and formatting
