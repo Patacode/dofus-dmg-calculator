@@ -97,9 +97,13 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Run unit tests
         run: cargo test --release --lib
+      - name: Install tarpaulin
+        id: install_tarpaulin
+        uses: actions-rs/tarpaulin@v0.1
+        if: ${{ inputs.enabledReportGeneration }}
       - name: Generate HTML report
         id: generate_report
-        if: ${{ inputs.enabledReportGeneration }}
+        if: ${{ steps.install_tarpaulin.outcome == 'success' }}
         run: |
           cargo tarpaulin \
             --out Html \
