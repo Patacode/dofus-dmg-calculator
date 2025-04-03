@@ -1,4 +1,4 @@
-use crate::impls
+use crate::impls;
 
 /// Computes the damage estimation of a Dofus spell.
 ///
