@@ -9,9 +9,15 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Added
+
+- Boolean options in deployment pipeline to enable/disable unit and formatting
+tests
+
 ### Removed
 
 - Profile selection option in deployment pipeline
+- Benchmarking in deployment pipeline
 
 ### Fixed
 
