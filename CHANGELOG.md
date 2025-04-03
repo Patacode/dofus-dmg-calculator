@@ -9,10 +9,6 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
-### Added
-
-- Code coverage report generation in deployment pipeline
-
 ### Removed
 
 - Profile selection option in deployment pipeline
