@@ -26,9 +26,6 @@ on:
         description: "Deploy in dry run mode"
         type: boolean
         default: true
-      enabledReportGeneration:
-        description: "Generate HTML reports for code coverage and benchmarking"
-        type: boolean
 
 env:
   RUSTFLAGS: "-Dwarnings"
@@ -48,14 +45,12 @@ jobs:
           echo "Integration tests: $INTEGRATION_TESTS"
           echo "Benchmarking: $BENCHMARKING"
           echo "Dry run: $DRY_RUN"
-          echo "Report generation: $REPORT_GENERATION"
         env:
           BUMP_LEVEL: ${{ inputs.bumpLevel }}
           LINT_TESTS: ${{ inputs.enabledLintTests }}
           INTEGRATION_TESTS: ${{ inputs.enabledIntegrationTests }}
           BENCHMARKING: ${{ inputs.enabledBenchmarking }}
           DRY_RUN: ${{ inputs.enabledDeploymentDryRun }}
-          REPORT_GENERATION: ${{ inputs.enabledReportGeneration }}
 
   build:
     name: Build
@@ -97,25 +92,6 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Run unit tests
         run: cargo test --release --lib
-      - name: Install tarpaulin
-        id: install_tarpaulin
-        uses: actions-rs/tarpaulin@v0.1
-        if: ${{ inputs.enabledReportGeneration }}
-      - name: Generate HTML report
-        id: generate_report
-        if: ${{ steps.install_tarpaulin.outcome == 'success' }}
-        run: |
-          cargo tarpaulin \
-            --out Html \
-            --exclude-files src/lib.rs src/main.rs benches/* tests/* \
-            --output-dir target/tarpaulin
-      - name: Archive code coverage report
-        uses: actions/upload-artifact@v4
-        if: ${{ steps.generate_report.outcome == 'success' }}
-        with:
-          name: report-code-coverage
-          path: ./target/tarpaulin
-          retention-days: 1
 
   integration-test:
     name: Integration test
@@ -216,5 +192,4 @@ jobs:
         uses: geekyeggo/delete-artifact@v5
         with:
           failOnError: false
-          name: |
-            crate-artifacts
+          name: crate-artifacts
