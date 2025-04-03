@@ -181,7 +181,7 @@ jobs:
   cleanup:
     name: Cleanup
     runs-on: ubuntu-latest
-    needs: [build, deploy, deploy-dryrun]
+    needs: [deploy, deploy-dryrun]
     if: ${{ always() }}
     steps:
       - name: Delete all archived artifacts
