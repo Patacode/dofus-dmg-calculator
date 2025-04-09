@@ -9,4 +9,3 @@ else
 fi
 
 cargo make dev
-cargo build
