@@ -9,6 +9,10 @@ and this project adheres to
 [comment]: <> (@PlannedForNextRelease)
 ## [@Unreleased] - @ReleaseDate
 
+### Changed
+
+- Project build step in bootstrap script moved to Makefile dev task
+
 ## [1.1.6] - 2025-04-09 <a id="1.1.6"></a>
 
 ### Removed
