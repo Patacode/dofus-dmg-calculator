@@ -5,7 +5,7 @@ use dofus_dmg_calculator::compute_dmg_estimation_with_res;
 
 #[derive(Parser, Debug)]
 #[command(version, author, long_about = None)]
-#[command(about = "Compute a Dofus spell damage estimation")]
+#[command(about = "Estimate Dofus spells' output damage")]
 #[command(help_template = "\
 {before-help}
 {usage-heading} {usage}
