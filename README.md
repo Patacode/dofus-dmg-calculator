@@ -22,7 +22,7 @@ Available options:
 $ dofus-dmg-calculator --help
 Usage: dofus-dmg-calculator [OPTIONS]
 
-Compute a Dofus spell damage estimation
+Estimate Dofus spells' output damage
 
 Options:
   -i, --default-min <MIN_DEFAULT_DMG>  The spell minimum default damage [default: 0]
