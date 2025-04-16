@@ -12,6 +12,8 @@ and this project adheres to
 ### Changed
 
 - Project build step in bootstrap script moved to Makefile dev task
+- About message in help message
+- Crate description message
 
 ## [1.1.6] - 2025-04-09 <a id="1.1.6"></a>
 
